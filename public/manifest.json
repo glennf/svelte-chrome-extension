@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Svelte Chrome Extension",
+    "version": "1.0.0",
+    "description": "A Chrome Extension built with Svelte",
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "permissions": ["activeTab"],
+    "background": {
+      "scripts": ["build/background.js"],
+      "persistent": false
+    }
+  }

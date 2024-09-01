@@ -1,0 +1,34 @@
+# Node modules
+/node_modules/
+
+# Build output
+/public/build/
+
+# SvelteKit
+/.svelte-kit/
+/.svelte/
+
+# Rollup cache
+/.rpt2_cache/
+/.rollup.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Miscellaneous
+*.log
+*.lock
+*.tmp
+*.temp
