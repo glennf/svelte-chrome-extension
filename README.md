@@ -44,32 +44,37 @@ npm run dev
 - `scripts/`: Contains utility scripts.
 - `setupTypeScript.js`: Script to set up TypeScript.
 
+## Automated Releases
+
+This repository includes automated release creation using GitHub Actions. When you push a version tag, a new release will be automatically created with a packaged extension ready for distribution.
+
+### Creating a Release
+
+1. Update the version in `public/manifest.json` if needed
+2. Create and push a version tag:
+   ```bash
+   git tag v1.0.1
+   git push origin v1.0.1
+   ```
+3. The GitHub Actions workflow will automatically:
+   - Build the extension
+   - Package it into a ZIP file
+   - Create a GitHub release
+   - Attach the packaged extension for download
+
+### Release Artifacts
+
+Each release includes:
+- `svelte-chrome-extension-v{version}.zip` - Complete extension package ready for Chrome installation
+
 ## Deploying the extension
-To deploy the extension, you can package the contents of the public directory and upload it to the Chrome Web Store.
 
-This is a project template for building Chrome Extensions with [Svelte](https://svelte.dev).
+To deploy the extension, you can:
 
-## Get started
+1. **Use automated releases**: Push a version tag to create a release automatically (recommended)
+2. **Manual deployment**: Package the contents of the public directory and upload it to the [Chrome Web Store](https://developer.chrome.com/docs/extensions/)
 
-Install the dependencies:
+## Additional resources
 
-``` bash
-npm install
-npm run build
-```
-
-## Running in development mode
-
-To start the development server with Rollup, run:
-
-```
-npm run dev
-```
-
-## Deploying the extension
-
-To deploy the extension, you can package the contents of the public directory and upload it to the [Chrome Web Store](https://developer.chrome.com/docs/extensions/).
-
-Additional resources
-[Svelte](https://svelte.dev)
-[Chrome Extensions](https://developer.chrome.com/docs/extensions/)
+- [Svelte](https://svelte.dev)
+- [Chrome Extensions](https://developer.chrome.com/docs/extensions/)
