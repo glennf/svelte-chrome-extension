@@ -6,19 +6,22 @@ import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 
+const production = !process.env.ROLLUP_WATCH;
+
 export default [
   {
-    input: 'src/popup/index.js',
+    input: 'src/popup/index.ts',
     output: {
       file: 'public/build/popup.js',
       format: 'iife',
-      name: 'app'
+      name: 'app',
+      sourcemap: !production
     },
     plugins: [
       svelte({
         preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
-          dev: false
+          dev: !production
         }
       }),
       css({ output: 'popup.css' }),
@@ -31,21 +34,26 @@ export default [
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-      terser()
+      production && terser()
     ]
   },
   {
-    input: 'src/background.js',
+    input: 'src/background.ts',
     output: {
       file: 'public/build/background.js',
-      format: 'iife'
+      format: 'iife',
+      sourcemap: !production
     },
     plugins: [
       resolve({
         browser: true
       }),
       commonjs(),
-      terser()
+      typescript({
+        sourceMap: !production,
+        inlineSources: !production
+      }),
+      production && terser()
     ]
   }
 ];
